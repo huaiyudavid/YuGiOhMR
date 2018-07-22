@@ -14,7 +14,12 @@ public static class GeometryUtilities {
         return sphere;
     }
 
-    public static GameObject CreateCylinder(Transform parent, Vector3 startOffset, Vector3 endOffset, float thickness) {
+    public static GameObject CreateCylinder(
+        Transform parent,
+        Vector3 startOffset,
+        Vector3 endOffset,
+        float thickness
+    ) {
         Vector3 mid = 0.5F * (startOffset + endOffset);
         Vector3 delta = endOffset - startOffset;
         GameObject cylinder = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
@@ -24,21 +29,11 @@ public static class GeometryUtilities {
         return cylinder;
     }
 
-    // Precondition: normalDirection is perpendicular to (endOffset - startOffset).
-    public static GameObject CreateQuadLine(Transform parent, Vector3 startOffset, Vector3 endOffset, Vector3 normalDirection, float thickness) {
-        Vector3 mid = 0.5F * (startOffset + endOffset);
-        Vector3 delta = endOffset - startOffset;
-        GameObject quad = GameObject.CreatePrimitive(PrimitiveType.Quad);
-        quad.transform.SetParent(parent);
-        Quaternion q = Quaternion.FromToRotation(Vector3.up, delta);
-        // TODO: How to fix normal?
-        // Quaternion r = Quaternion.FromToRotation(q * Vector3.forward, normalDirection);
-        quad.transform.SetPositionAndRotation(mid, q);
-        quad.transform.localScale = new Vector3(thickness, delta.magnitude, thickness);
-        return quad;
-    }
-
-    public static GameObject[] CreateCylinderFrame(Transform parent, Vector3[] vertexOffsets, float thickness) {
+    public static GameObject[] CreateCylinderFrame(
+        Transform parent,
+        Vector3[] vertexOffsets,
+        float thickness
+    ) {
         if (vertexOffsets.Length <= 1) { return new GameObject[0]; }
         GameObject[] frameElements = new GameObject[2 * vertexOffsets.Length];
         int n = vertexOffsets.Length - 1;
@@ -51,8 +46,33 @@ public static class GeometryUtilities {
         return frameElements;
     }
 
+    // Precondition: normalDirection is perpendicular to (endOffset - startOffset).
+    public static GameObject CreateQuadLine(
+        Transform parent,
+        Vector3 startOffset,
+        Vector3 endOffset,
+        Vector3 normalDirection,
+        float thickness
+    ) {
+        Vector3 mid = 0.5F * (startOffset + endOffset);
+        Vector3 delta = endOffset - startOffset;
+        GameObject quad = GameObject.CreatePrimitive(PrimitiveType.Quad);
+        quad.transform.SetParent(parent);
+        Quaternion q = Quaternion.FromToRotation(Vector3.up, delta);
+        // TODO: How to fix normal?
+        // Quaternion r = Quaternion.FromToRotation(q * Vector3.forward, normalDirection);
+        quad.transform.SetPositionAndRotation(mid, q);
+        quad.transform.localScale = new Vector3(thickness, delta.magnitude, thickness);
+        return quad;
+    }
+
     // Precondtion: all vertexOffsets must lie in the plane perpendicular to normalDirection.
-    public static GameObject[] CreateQuadFrame(Transform parent, Vector3[] vertexOffsets, Vector3 normalDirection, float thickness) {
+    public static GameObject[] CreateQuadFrame(
+        Transform parent,
+        Vector3[] vertexOffsets,
+        Vector3 normalDirection,
+        float thickness
+    ) {
         if (vertexOffsets.Length <= 1) { return new GameObject[0]; }
         GameObject[] frameElements = new GameObject[2 * vertexOffsets.Length];
         int n = vertexOffsets.Length - 1;

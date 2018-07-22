@@ -122,8 +122,9 @@ GameObject:
   m_Component:
   - component: {fileID: 833024552}
   - component: {fileID: 833024551}
+  - component: {fileID: 833024553}
   m_Layer: 0
-  m_Name: CardSpawner
+  m_Name: KaibaSimulator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,11 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 712b481cb4a6c1d4ea876d32cce6cf7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blueEyesWhiteDragon: {fileID: 1293947881849990, guid: ace5de68d0569364a8799b881ca99d6b,
-    type: 2}
-  fieldPadding: 0.1
-  interFieldPadding: 0.2
-  fieldThickness: 0.02
+  card: {fileID: 1293947881849990, guid: ace5de68d0569364a8799b881ca99d6b, type: 2}
 --- !u!4 &833024552
 Transform:
   m_ObjectHideFlags: 0
@@ -158,6 +155,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &833024553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 833024550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4682216ea66bc14408ee81edc743a17d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fieldPadding: 0.1
+  interFieldPadding: 0.2
+  fieldThickness: 0.02
 --- !u!1 &1639907470
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +181,7 @@ GameObject:
   - component: {fileID: 1639907472}
   - component: {fileID: 1639907471}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: KaibaCam
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
