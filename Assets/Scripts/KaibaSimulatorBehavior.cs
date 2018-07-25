@@ -142,7 +142,7 @@ public class KaibaSimulatorBehavior : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetKeyDown(KeyCode.D)) {
+		if (Input.GetKeyDown(KeyCode.F)) {
             --k;
             StartCoroutine(FlipCard(deck[k], allZoneOffsets[39 - k], 0.5F));
         }
